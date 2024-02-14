@@ -36,7 +36,48 @@ the app will start and you can see the server output
 [remix-serve] http://localhost:3000 (http://192.168.0.139:3000)
 ```
 
+
 you can use browser to see the application now.
 
 Open the browser and with url https://localhost:3000/posts, you can see the new added post page.
 
+And we need to refector it with the sub-directory structure. Make a sub directory *posts* under ~/app/routes, and move posts.tsx to this sub directory, rename it to the index.tsx.
+
+# Data Loading
+
+You see that every remix page have a loader function, you must define a default loader function to make the page to work, and remix use it to load the data when the page was rendered.
+
+Let's make the loader function to return some data and display on the page.
+
+```javascript
+// ~/app/routes/posts/index.tsx
+
+import { useLoaderData } from "@remix-run/react"
+const posts = [
+    {
+        title: 'first post'
+    },
+    {
+        title: 'second post'
+    }
+]
+export const loader = async ()=> {
+    return {
+        posts
+    }
+    
+}
+
+export default function PostIndex() {
+    const { posts } = useLoaderData<typeof loader>()
+
+    return (
+        <div>
+            <h1>Post page</h1>
+            <div>
+            { posts && posts.map( post=> (<h3>{post.title}</h3>))}
+            </div>
+        </div>
+    )
+}
+```
