@@ -125,6 +125,7 @@ pnpm prisma studio
 ➜  tutorial git:(master) ✗ pnpm prisma studio                           
 Environment variables loaded from .env
 Prisma schema loaded from prisma/schema.prisma
+Prisma Studio is up on http://localhost:5555
 ```
 
 
