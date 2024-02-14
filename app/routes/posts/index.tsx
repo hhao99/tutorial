@@ -2,17 +2,12 @@
 // ~/app/routes/posts/index.tsx
 
 import { useLoaderData } from "@remix-run/react"
-const posts = [
-    {
-        title: 'First post'
-    },
-    {
-        title: 'Second post'
-    }
-]
+
+import { getAllPosts } from "~/utils/post.services"
+
 export const loader = async ()=> {
     return {
-        posts
+        posts: await getAllPosts()
     }
     
 }

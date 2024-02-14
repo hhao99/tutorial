@@ -81,3 +81,40 @@ export default function PostIndex() {
     )
 }
 ```
+
+# Data Loading with Prisma 
+
+Now we need a database to store the post content. Prisma is a very popular ORM framework, we will use prisma to store the blog post in the database.
+
+## prepare the prisma 
+Add the prisma to the project
+```bash
+pnpm i -D prisma
+pnpm prisma init --datasource-provider sqlite
+```
+Prisma will initialize the database environment and use the sqlite as the database backend, it will generate the .env file and ~/prisma directory, you can add model in the ~/prisma/schema.prisma 
+
+```javascript
+
+model Post {
+  id Int @id @default(autoincrement())
+  title String
+  content String?
+  published Boolean @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+```
+
+and prisma can migrate the database model with command
+```bash
+pnpm prisma migrate dev --name 'blog post model'
+```
+
+## prisma client
+Add a new file to store all the prisma database client function and act as the service to do the database operation for the web application.
+
+You can review the file in the ~/utils/post.services.ts
+And prisma CRUD function, please refer the [prisma docs](https://www.prisma.io/docs/orm/prisma-client/queries/crud)
+##
+
