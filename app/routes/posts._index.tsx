@@ -24,7 +24,7 @@ export default function PostIndex() {
 
     return (
         <div>
-            <h1>Post page</h1>
+            <h1>Post List</h1>
             <div>
             { posts && posts.map( post=> (<Item key={post.title} item={post} />)) }
             </div>
