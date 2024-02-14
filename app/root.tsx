@@ -9,8 +9,11 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 
-import './tailwind.css'
+import tailwind from '~/tailwind.css'
 
+export const links: LinksFunction = ()=> [
+  { rel: "stylesheet",  href: tailwind },
+]
 export default function App() {
   return (
     <html lang="en">
@@ -20,7 +23,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className='bg-blue-200'>
+      <body className='bg-indigo-200'>
         <Outlet />
         <ScrollRestoration />
         <Scripts />
