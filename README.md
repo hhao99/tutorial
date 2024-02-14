@@ -111,10 +111,20 @@ and prisma can migrate the database model with command
 pnpm prisma migrate dev --name 'blog post model'
 ```
 
-## prisma client
+## Prisma client
 Add a new file to store all the prisma database client function and act as the service to do the database operation for the web application.
 
 You can review the file in the ~/utils/post.services.ts
 And prisma CRUD function, please refer the [prisma docs](https://www.prisma.io/docs/orm/prisma-client/queries/crud)
-##
+
+## Prisma studio
+For the test purpose, we can use prisma studio to operate the data in the sqlite database.
+
+```bash
+pnpm prisma studio
+➜  tutorial git:(master) ✗ pnpm prisma studio                           
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+```
+
 
