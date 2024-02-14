@@ -20,7 +20,7 @@ export default function EditPost() {
             <div>
                 <Form id='edit-post' method='post'>
                     <div>
-                        <input hidden id='id' defaultValue={post.id} />
+                        <input hidden id='id' name='id' defaultValue={post.id} />
                         <label>Title:
                             <input className='w-full border border-gray-500 px-2 py-1 text-lg rounded ' 
                             type='text' id='title' name='title' 
@@ -30,7 +30,7 @@ export default function EditPost() {
                     </div>
                     <div>
                         <label>Content:
-                            <textarea cols={60} rows={6} id='title' name='title' defaultValue={post.content}/>
+                            <textarea cols={60} rows={6} id='content' name='content' defaultValue={post.content}/>
                         </label>
                     </div>
                     <div>
@@ -45,8 +45,8 @@ export default function EditPost() {
 export async function action({params, request}) {
     const id = parseInt(params.id)
     const formData = await request.formData()
-    const title = formData.get('title')
-    const content = formData.get('content')
-    await updatePostById({id,title,content})
+    const post = Object.fromEntries(formData)
+    console.dir(post, { depth: null})
+    await updatePostById( {...post, id} )
     return redirect('/posts')
 }

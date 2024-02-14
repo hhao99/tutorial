@@ -8,7 +8,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-
+import Layout from '~/layout'
 import tailwind from '~/tailwind.css'
 
 export const links: LinksFunction = ()=> [
@@ -24,7 +24,10 @@ export default function App() {
         <Links />
       </head>
       <body className='bg-indigo-200'>
-        <Outlet />
+        <Layout>
+          <Outlet />
+        </Layout>
+        
         <ScrollRestoration />
         <Scripts />
         <LiveReload />

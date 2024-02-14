@@ -1,4 +1,4 @@
-import { useLoaderData } from "@remix-run/react";
+import { Link, useLoaderData } from "@remix-run/react";
 import { getPostById } from "~/utils/post.services";
 
 export const loader = async ({params})=> {
@@ -18,6 +18,9 @@ export default  function PostById() {
             <hr />
             <div>
                 <div>{post.content}</div>
+            </div>
+            <div className='m-6 text-right'>
+                <Link to={`/posts/${post.id}/edit`}>Edit</Link>
             </div>
         </div>
     )

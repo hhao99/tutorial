@@ -1,7 +1,7 @@
 
 // ~/app/routes/posts/index.tsx
 
-import { useLoaderData } from "@remix-run/react"
+import { Link, useLoaderData } from "@remix-run/react"
 
 import { getAllPosts } from "~/utils/post.services"
 
@@ -15,7 +15,7 @@ export const loader = async ()=> {
 const Item = ({item})=> {
     return (
         <div>
-            <h3>{item.title}</h3>
+            <Link to={`/posts/${item.id}`}>{item.title}</Link>
         </div>
     )
 }
